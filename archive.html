@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {{template "head" .}}
+        <meta name="keywords" content="{{.Site.Title}}, {{.Site.Subtitle}}">
+        <meta name="description" content="{{.Site.Subtitle}}">
+        <meta name="author" content="{{.Author.Name}}">
+        <title>网站目录 - {{.Site.Title}}</title>
+    </head>
+    <body>
+<header class="header-wrap" style="background-image:url(https://ooo.0o0.ooo/2017/03/16/58ca0477e7894.jpg)">
+<div class="tool2">
+  <a class="index" href="{{.Site.Root}}/">
+    <i class="fa fa-angle-double-left" aria-hidden="true"></i>&nbsp;{{.Site.Title}}
+  </a>
+  <span class="menu">
+    <a class="current " href="{{.Site.Root}}/">首页</a>&nbsp;&nbsp;&nbsp;
+    <a href="{{.Site.Root}}/archive.html">{{i18n "archive"}}</a>&nbsp;&nbsp;&nbsp;
+	<a href="{{.Site.Root}}/tag.html">{{i18n "tag"}}</a>&nbsp;&nbsp;&nbsp;
+	{{if .Site.Url}}<a href="{{.Site.Root}}/atom.xml"><i class="fa fa-rss" aria-hidden="true"></i></a>{{end}}
+  </span>
+</div>
+    <div class="container">
+        <div class="post-group main">
+                <h1 class="page-title">网站目录</h1>
+                <section class="page-meta">{{.Site.Title}} × SiteMap</section>
+		</div>
+   </div>
+</header>
+        <article class="container">
+            <article class="main archive">
+                <ul class="archive-list">
+                    {{range .Archive}}
+                    <li class="archive-item">
+                        <div class="archive-year">{{.Year}}</div>
+                        <ul class="article-list">
+                            {{range .Articles}}
+                            <li class="article-item">
+                                <span class="date">{{.Date}}</span>
+                                <a href="{{.Link}}">{{.Title}}</a>
+                            </li>
+                            {{end}}
+                        </ul>
+                    </li>
+                    {{end}}
+                </ul>
+            </article>
+        </article>
+        {{template "footer" .}}
+    </body>
+    <script src="{{.Site.Root}}/bundle/index.js"></script>
+</html>
